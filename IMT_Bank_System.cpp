@@ -8,6 +8,8 @@ int main(){
 
     int window ;
 
+    cout<< "Eman";
+
     cout<< "choose"<<"\n "<<"1- Admin Window."<<"\n 2- Client Window.";
     // if choose 1 view Admin Window
     // if choose 2 view Client Window
