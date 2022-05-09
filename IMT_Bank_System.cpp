@@ -1,7 +1,4 @@
 // imports 
-
-//  Fatema samir Ahmed
-
 #include <iostream>
 #include <string>
 using namespace std;
@@ -74,6 +71,7 @@ void Exit_System(){
     exit(0);
 }
 
+
 // user class
 
 class  User_Window{
@@ -120,6 +118,7 @@ class Creat_Bank_Account{
 Creat_Bank_Account::Creat_Bank_Account(){
 
 }
+
 Creat_Bank_Account::Creat_Bank_Account(string FullName, string FullAdress, string Account_Status, string Guardian ){
 
 }
