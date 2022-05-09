@@ -24,7 +24,7 @@ int main(){
         cout<<"Sorry, Please choose 1 or 2 or 3 ";
     }
 
-    cout <<"Alaa";
+    
 
 return 0;
 }
