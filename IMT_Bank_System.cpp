@@ -40,21 +40,23 @@ class  Admin_Window{
 };
 
 void init_vew_window(){
-    
+
     int mode;
     printf("1- Creat Acount \n2- Open Existing Acount \n3- Exit System");
     cin>> mode ;
 
 
     if (mode == 1){
-
+// creat new acount 
     }
 
     else if (mode == 2){
+        // Open Existing Acount 
         
     }
     else if (mode == 3){
-        
+        // Exit System
+        Exit_System();
     }
 
     else
