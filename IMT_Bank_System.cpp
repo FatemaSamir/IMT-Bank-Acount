@@ -40,10 +40,26 @@ class  Admin_Window{
 };
 
 void init_vew_window(){
+    
     int mode;
     printf("1- Creat Acount \n2- Open Existing Acount \n3- Exit System");
     cin>> mode ;
-    
+
+
+    if (mode == 1){
+
+    }
+
+    else if (mode == 2){
+        
+    }
+    else if (mode == 3){
+        
+    }
+
+    else
+        cout<<"Sorry, Please choose 1 or 2 or 3 ";
+
 }
 
 void Exit_System(){
