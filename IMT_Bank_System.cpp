@@ -27,10 +27,32 @@ return 0;
 }
 
 // Admin calss
+class  Admin_Window{
 
+    public:
+        void init_vew_window();
+        void creat_Account();
+        void open_existing_account();
+        void Exit_System();
+
+};
+
+void init_vew_window(){
+    int mode;
+    printf("1- Creat Acount \n2- Open Existing Acount \n3- Exit System");
+    cin>> mode ;
+    
+}
+
+void Exit_System(){
+    exit(0);
+}
 
 // user class
 
+class  User_Window{
+    
+};
 
 // Creat Acount class
 
