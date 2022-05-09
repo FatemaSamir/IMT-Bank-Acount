@@ -1,4 +1,7 @@
 // imports 
+
+//  Fatema samir Ahmed
+
 #include <iostream>
 #include <string>
 using namespace std;
@@ -17,8 +20,9 @@ int main(){
     }
 
     else if (window == 2 ) {
-    cout<<"Enter Bank Account ID and Password ";
+        cout<<"Enter Bank Account ID and Password ";
     }
+
     else{
         cout<<"Sorry, Please choose 1 or 2 or 3 ";
     }
@@ -42,12 +46,13 @@ class  Admin_Window{
 void init_vew_window(){
 
     int mode;
-    printf("1- Creat Acount \n2- Open Existing Acount \n3- Exit System");
+        printf("1- Creat Acount \n2- Open Existing Acount \n3- Exit System");
     cin>> mode ;
 
 
     if (mode == 1){
-// creat new acount 
+        // creat new acount 
+
     }
 
     else if (mode == 2){
@@ -56,7 +61,8 @@ void init_vew_window(){
     }
     else if (mode == 3){
         // Exit System
-        Exit_System();
+    Exit_System();
+
     }
 
     else
