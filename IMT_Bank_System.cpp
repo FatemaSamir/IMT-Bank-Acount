@@ -62,7 +62,7 @@ void init_vew_window(){
     }
     else if (mode == 3){
         // Exit System
-    Exit_System();
+    // Exit_System();
 
     }
 
@@ -74,6 +74,47 @@ void init_vew_window(){
 void Exit_System(){
     exit(0);
 }
+
+void creat_Account(){
+
+    string FullName;
+    string FullAdress;
+    string Account_Status;
+    string Guardian;
+    int NationalID;
+    int age;
+    int Guardian_id;
+    int Balance;
+    bool gradian = false;
+    cout << "- Full Name : ";
+    cin >> FullName;
+    cout <<"- Full Address : ";
+    cin >> FullAdress;
+    cout << "- Age : ";
+    cin >> age;
+    if (age < 21){
+        cout << "- Guardian National ID : ";
+        cin >> Guardian_id;
+        cout << "- Guardian Name : ";
+        cin >> Guardian;
+        gradian = true;
+    }
+    cout << "- National ID : ";
+    cin >> NationalID;
+    cout << "- Balance : ";
+    cin >> Balance;
+
+//  Creat Account with Guardian_id 
+if (gradian)
+        Creat_Bank_Account account = new Creat_Bank_Account(FullName, FullAdress, NationalID, age , Guardian_id, Guardian, Balance);
+
+//  Creat Account without Guardian_id 
+else 
+    Creat_Bank_Account account = new Creat_Bank_Account(FullName, FullAdress, age , Balance);
+}
+
+
+
 // Creat Acount class
 class Creat_Bank_Account{
 //  information about user account 
@@ -83,7 +124,7 @@ class Creat_Bank_Account{
         string Account_Status; // by defult active 
         string Guardian;
         int NationalID;
-        int age;
+        int Age;
         int BankAccountID;
         int GuardianID;
         int Balance;
@@ -92,8 +133,33 @@ class Creat_Bank_Account{
     public:
 
     // define conatractor 
-    Creat_Bank_Account();
-    Creat_Bank_Account(string FullName, string FullAdress, string Account_Status, string Guardian );
+    Creat_Bank_Account(){
+        
+    }
+
+    Creat_Bank_Account(string Name, string Adress, int nationalID,  int age, int balance){
+
+        this->FullName = Name;
+        FullAdress = Adress;
+        NationalID = nationalID;
+        Age = age;
+        Balance = balance;
+        Account_Status = "Active";
+
+    }
+    
+    Creat_Bank_Account(string Name, string Adress,  int nationalID, int age, int guardian_id, string guardian, int balance){
+        
+        this->FullName = Name;
+        FullAdress = Adress;
+        NationalID = nationalID;
+        Age = age;
+        Balance = balance;
+        Account_Status = "Active";
+        GuardianID = guardian_id;
+        Guardian = guardian;
+
+    }
     
 
     // put getter and setter for each attribute 
@@ -133,13 +199,6 @@ class Creat_Bank_Account{
 
 // implement methods
 
-Creat_Bank_Account::Creat_Bank_Account(){
-
-}
-
-Creat_Bank_Account::Creat_Bank_Account(string FullName, string FullAdress, string Account_Status, string Guardian ){
-
-}
 
 // put getter and setter for each attribute 
     string Creat_Bank_Account:: set_FullName(string FN){
@@ -226,6 +285,8 @@ void Creat_Bank_Account::Return_to_main_menu(){
 
 }
 
+
+
 // define list node 
 typedef struct listNode {
     Creat_Bank_Account account;
@@ -247,6 +308,8 @@ void ListInit(List* pl){
     pl->size = 0;
     pl->head = NULL;
 }
+
+
 void AddNode(List* pl, int pos, Creat_Bank_Account copyaccount){
     Node* q;
     int i;
@@ -273,7 +336,7 @@ int AcountIsExist(List* pl, int Bank_Account_ID){
     int index = 0;
     Node* temp = pl->head;
         while(temp){
-            if(temp->account.get_Bank_Account_ID()==Bank_Account_ID)
+            if(temp->account.get_bankAccountID()==Bank_Account_ID)
                 return index;
 
             temp = temp->next;
