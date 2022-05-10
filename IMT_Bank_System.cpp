@@ -1,7 +1,9 @@
+
 // imports 
 #include <iostream>
 #include <string>
 using namespace std;
+
 
 // Main class
 int main(){
@@ -12,6 +14,7 @@ int main(){
     // if choose 1 view Admin Window
     // if choose 2 view Client Window
     cin>> window ;
+    
     if (window == 1 ){
         cout<<"Enter Admin Username and Password ";
     }
@@ -24,10 +27,10 @@ int main(){
         cout<<"Sorry, Please choose 1 or 2 or 3 ";
     }
 
-    
 
 return 0;
 }
+
 
 // Admin calss
 class  Admin_Window{
@@ -35,6 +38,7 @@ class  Admin_Window{
     public:
         void init_vew_window();
         void creat_Account();
+        void change_statuse();
         void open_existing_account();
         void Exit_System();
 
@@ -72,14 +76,7 @@ void Exit_System(){
 }
 
 
-// user class
-
-class  User_Window{
-    
-};
-
 // Creat Acount class
-
 class Creat_Bank_Account{
 //  information about user account 
     private:
@@ -101,7 +98,7 @@ class Creat_Bank_Account{
     Creat_Bank_Account(string FullName, string FullAdress, string Account_Status, string Guardian );
 
     // put getter and setter for each attribute 
-
+    int get_Bank_Account_ID();
 
     // define methods that can user do 
     void init_Client_Window();  // show main_menu
@@ -112,7 +109,6 @@ class Creat_Bank_Account{
 
 
 };
-
 // implement methods
 
 Creat_Bank_Account::Creat_Bank_Account(){
@@ -124,7 +120,9 @@ Creat_Bank_Account::Creat_Bank_Account(string FullName, string FullAdress, strin
 }
 
 // put getter and setter for each attribute 
-
+int Creat_Bank_Account::get_Bank_Account_ID(){
+    return BankAcountID;
+}
 
 // define methods that can user do 
 void Creat_Bank_Account::init_Client_Window(){
@@ -143,4 +141,61 @@ void  Creat_Bank_Account::Deposit_in_Account(float cash_amount){
 }
 void Creat_Bank_Account::Return_to_main_menu(){
 
+}
+
+// define list node 
+typedef struct listNode {
+    Creat_Bank_Account account;
+    struct listNode* next;
+}Node;
+
+// define list based on node 
+
+typedef struct listbasedlinked{
+    Node* head;
+    int size;
+}List;
+
+void ListInit(List* pl);
+void AddNode(List* pl, int pos, Creat_Bank_Account account);
+int AcountIsExist(List* pl,int Bank_Account_ID);
+
+void ListInit(List* pl){
+    pl->size = 0;
+    pl->head = NULL;
+}
+void AddNode(List* pl, int pos, Creat_Bank_Account copyaccount){
+    Node* q;
+    int i;
+    Node* pn = (Node*)malloc(sizeof(Node));
+    pn-> account = copyaccount;
+    pn-> next = NULL;
+    if(pos==0){
+        pn->next = pl->head;
+        pl->head = pn;
+    }
+    else{
+        for(q = pl->head, i=0; i< pos-1; i++)
+        {
+            q = q->next;
+        }
+        pn ->next= q->next;
+        q->next= pn;
+    }
+    pl->size++;
+    
+}
+
+int AcountIsExist(List* pl, int Bank_Account_ID){
+    int index = 0;
+    Node* temp = pl->head;
+        while(temp){
+            if(temp->account.get_Bank_Account_ID()==Bank_Account_ID)
+                return index;
+
+            temp = temp->next;
+            index++;
+        }
+
+        return -1;
 }
